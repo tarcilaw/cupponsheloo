@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="PT-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bancodedados.js"></script>
+    <title>Cupons Heloo</title>
+
+    <link rel="icon" type="imagem/png" href="./images/logo.png" />
+
+  </head>
+  <body>
+
+
+    <!-- HEADER 
+    <header class="card-header bg-info">
+        <h2 class="title-header">Cupons Heloo</h2>
+    </header>   
+    -->
+    
+    <div class="container contact-form">
+        <div class="contact-image">
+            <img src="./images/logo.png" />
+        </div>
+
+        <div class="title">
+            <h3>Cuppons Heloo!</h3>
+        </div>
+
+        <div class="col-md-2"></div>
+          <div class="alert card card-alert col-md-8" id="card-alert">
+            <span></span>
+          </div>
+        
+
+        <div id="loading">
+          <img src="images/loading.gif" alt="Animação de carregamento">
+          <center><span style="font-weight: bold; color: white;">Carregando lista</span></center>
+        </div>
+
+
+        <div class="area-form" id="area-form">
+
+            <div class="form-group" id="form">
+            <div class="row">
+                <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <input type="text" name="txtName" id="codigo" class="form-control" placeholder="Código do cupom" value="" />
+                            <span class="descricao-form">*O código informado deve ser composto por pelo menos uma letra e números</span>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="txtEmail" id="descricao" class="form-control" placeholder="Descrição" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="txtPhone" id="valor" class="form-control" placeholder="Valor" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="txtPhone" id="dataexpiracao" class="form-control" placeholder="Data de expedição" value="" />
+                        </div>
+                        <div class="form-group">
+                            <center><div id="cadastrarcupom" name="btnSubmit" class="btnContact btn btn-primary">Cadastrar cupom</div></center>
+                            <center><div id="alterarcupom" name="btnSubmit" class="btnContact btn btn-warning">Alterar cupom</div></center>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="area-cupons accordion" id="area-cupons">
+            <div class="form-group">
+              <center><input type="text" id="pesquisa" class="form-control" placeholder="Pesquisar cupom"/></center>
+            </div>
+
+            <div class="form-group area-filtro">
+
+              <center><p>
+                <a class="btn btn-outline-primary btn-sm botao-pdfiltrar" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Filtrar cupons
+                </a>
+              </p></center>
+              <div class="collapse" id="collapseExample3">
+                <p>
+                  <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Filtrar por situação
+                  </a>
+                </p>
+                <div class="collapse" id="collapseExample">
+                  <select class="form-control" id="filtrosituacao">
+                    <option value="">Escolha...</option>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Utilizado">Utilizado</option>
+                    <option value="Expirado">Expirado</option>
+                  </select>
+                </div>
+  
+                <p>
+                  <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Período de expiração
+                  </a>
+                </p>
+  
+                
+                <div class="collapse" id="collapseExample2">
+                  <div class="form-group">
+                    <input type="date" name="txtPhone" id="datafiltroinicio" class="form-control" placeholder="Data de expedição" value="" />
+                    <center><label>Até o dia:</label></center>
+                    <input type="date" name="txtPhone" id="datafiltrofinal" class="form-control" placeholder="Data de expedição" value="" />
+                    <input type="button" name="btnSubmit" class="btn btn-light btn-sm btn-outline-primary" id="btn-filtrardata" style="margin-top:5%;" value="Filtrar" />
+                  </div>
+                </div>
+              </div>
+             
+
+            </div>
+
+            <div class="container">
+              <center><h5 class="title-cupons">Cupons Cadastrados:</h5></center>
+              <ul class="list-group" id="list-group">
+              </ul>
+            </div>
+            
+        </div>
+
+        <div class="area-cupom" id="area-cupom">
+          <div class="row">
+            <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <input type="text" name="txtName" id="codigousar" class="form-control" placeholder="Código do cupom" value="" />
+                        <span class="descricao-form">*O código informado deve ser composto por pelo menos uma letra e números</span>
+                        <center><div id="usandocupom" name="btnSubmit" class="btnContact btn usandocupom btn-primary">Usar cupom</div></center>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div class="form-group area-botao">
+            <input type="button" name="btnSubmit" class="btn btn-light botao btn-outline-primary botao-acao" value="Cadastrar Cupom" />
+            <input type="button" name="btnSubmit" class="btn btn-light botao btn-outline-success botao-usar" value="Usar Cupom" />
+        </div>
+
+        <div class="form-group area-btn-voltar botao">
+            <input type="button" name="btnSubmit" class="btn btn-info botao botao-voltar btn-sm" value="Ver cupons" />
+        </div>
+    </div>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDa2UFukIprIUOgd85RkhbSy4elHlygik8",
+      authDomain: "cupponsheloo.firebaseapp.com",
+      databaseURL: "https://cupponsheloo.firebaseio.com",
+      projectId: "cupponsheloo",
+      storageBucket: "cupponsheloo.appspot.com",
+      messagingSenderId: "46912730238",
+      appId: "1:46912730238:web:c471088c26a93b4fc2d42f"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+    <!-- CÓDIGO JAVASCRIPT -->
+
+    <script src="js/index.js"></script>
+    <script>
+        
+    </script>
+
+
+
+  </body>
+</html>
